@@ -8,6 +8,6 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-version_scheme = "post-tag"
+version_scheme = "release-branch-semver"
 local_scheme = "node-and-date"
 write_to = "src/__version__.py"
