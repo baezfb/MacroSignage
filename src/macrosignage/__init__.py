@@ -53,7 +53,7 @@ def macro_signage_app(instance_path=None):
 
     @app.get('/')
     def index():
-        return redirect(url_for('display.display_public_key', public_key='default'))
+        return redirect(url_for('display.index'))
 
     # Register blueprints
     for blueprint in blueprints:
