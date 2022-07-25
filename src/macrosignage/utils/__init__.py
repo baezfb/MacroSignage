@@ -1,3 +1,17 @@
+def generate_token(length: int = 32):
+    """
+    Generate a random token.
+
+    Args:
+        length (int): Length of token.
+
+    Returns:
+        str: Random token.
+    """
+    from secrets import token_urlsafe
+    return token_urlsafe(length)
+
+
 def create_dir(path: str):
     """
     Create a directory if it doesn't exist.
