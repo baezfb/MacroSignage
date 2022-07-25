@@ -5,6 +5,7 @@ from flask import Flask, redirect, url_for
 
 from .utils import create_instance_config
 from .blueprints import blueprints
+from .extensions import extensions
 
 # Current working directory
 cwd = getcwd()
@@ -42,6 +43,14 @@ def macro_signage_app(instance_path=None):
     # Load instance config overriding default config
     app.config.from_pyfile(application_instance_config_file, silent=True)
 
+    @app.before_first_request
+    def before_first_request():
+        """
+        Execute before first request.
+        """
+        from .extensions import db
+        db.create_all()
+
     @app.get('/')
     def index():
         return redirect(url_for('display.display_public_key', public_key='default'))
@@ -49,5 +58,9 @@ def macro_signage_app(instance_path=None):
     # Register blueprints
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
+
+    # Register extensions
+    for extension in extensions:
+        extension.init_app(app)
 
     return app
