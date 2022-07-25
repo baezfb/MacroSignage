@@ -1,9 +1,10 @@
 from os import getcwd
 from os.path import abspath, dirname, join
 
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 from .utils import create_instance_config
+from .blueprints import blueprints
 
 # Current working directory
 cwd = getcwd()
@@ -41,8 +42,12 @@ def macro_signage_app(instance_path=None):
     # Load instance config overriding default config
     app.config.from_pyfile(application_instance_config_file, silent=True)
 
-    @app.route('/')
-    def hello_world():
-        return 'Hello World!'
+    @app.get('/')
+    def index():
+        return redirect(url_for('display.display_public_key', public_key='default'))
+
+    # Register blueprints
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)
 
     return app
