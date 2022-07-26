@@ -2,7 +2,10 @@ from flask import Blueprint, render_template, url_for, redirect
 
 from .models import Display
 
-display = Blueprint('display', __name__, template_folder='templates', url_prefix='/display')
+display = Blueprint('display',
+                    __name__,
+                    template_folder='templates',
+                    url_prefix='/display')
 
 
 @display.before_app_first_request
