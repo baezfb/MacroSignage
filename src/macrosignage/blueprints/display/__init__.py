@@ -43,4 +43,32 @@ def display_public_key(public_key):
     dsp = Display.query.filter_by(public_key=public_key, active=True).first()
     if dsp is None:
         return redirect(url_for('.index'))
-    return render_template('display/display.html', display=dsp)
+    return render_template('display/display.html', display=dsp, title=dsp.name)
+
+
+@display.get('/new')
+def new_display():
+    """
+    Render the new display page
+    """
+    form = DisplayForm()
+    return render_template('display/new_display.html',
+                           title='New Display',
+                           form=form)
+
+
+@display.post('/new')
+def create_display():
+    """
+    Handle the new display form.
+    """
+    form = DisplayForm()
+    if form.validate_on_submit():
+        dsp = Display(name=form.name.data,
+                      description=form.description.data)
+        dsp.save()
+        return redirect(
+            url_for('.display_public_key', public_key=dsp.public_key))
+    return render_template('display/new_display.html',
+                           title='New Display',
+                           form=form)
