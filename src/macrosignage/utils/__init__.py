@@ -12,6 +12,22 @@ def generate_token(length: int = 32):
     return token_urlsafe(length)
 
 
+def generate_random_string(length: int = 32):
+    """
+    Generate a random string.
+
+    Args:
+        length (int): Length of string.
+
+    Returns:
+        str: Random string.
+    """
+    import random
+    import string
+    sys_ran = random.SystemRandom()
+    return ''.join(sys_ran.choice(string.ascii_letters) for _ in range(length))
+
+
 def create_dir(path: str):
     """
     Create a directory if it doesn't exist.
