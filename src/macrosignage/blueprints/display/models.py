@@ -1,6 +1,6 @@
 from ...extensions import db
 from ...utils.sql import SQLMixin
-from ...utils import generate_token
+from ...utils import generate_random_string
 
 
 class Display(db.Model, SQLMixin):
@@ -13,8 +13,8 @@ class Display(db.Model, SQLMixin):
     Returns:
         None
     """
-    public_key = db.Column(db.String(255), unique=True)
-    name = db.Column(db.String(255))
+    public_key = db.Column(db.String(10))
+    name = db.Column(db.String(255), unique=True)
     description = db.Column(db.String(255))
     active = db.Column(db.Boolean, default=True)
 
@@ -42,22 +42,10 @@ class Display(db.Model, SQLMixin):
         for display in displays:
             Display(**display).save()
 
-    def is_empty(self):
-        """
-        Check if display is empty.
-
-        Args:
-            None
-
-        Returns:
-            True if display is empty, False otherwise.
-        """
-        return self.public_key is None
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         if self.public_key is None:
-            self.public_key = generate_token()
+            self.public_key = generate_random_string(8)
         self.name = kwargs.get('name', None)
         self.description = kwargs.get('description', None)

@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, url_for, redirect
 
 from .models import Display
+from .forms import DisplayForm
 
 display = Blueprint('display',
                     __name__,
@@ -13,7 +14,7 @@ def before_request():
     """
     Execute before request.
     """
-    if Display.is_empty:
+    if Display.query.first() is None:
         Display.insert_default_displays()
 
 
