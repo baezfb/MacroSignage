@@ -36,7 +36,11 @@ def macro_signage_app(instance_path=None):
     # Instance config file
     application_instance_config_file = join(cwd, 'instance', 'config.py')
 
-    app = Flask(__name__, instance_relative_config=True, instance_path=instance_path)
+    app = Flask(__name__,
+                template_folder='ui/templates',
+                static_folder='ui/static',
+                instance_relative_config=True,
+                instance_path=instance_path)
 
     # Load default config
     app.config.from_pyfile(application_default_config_file)
