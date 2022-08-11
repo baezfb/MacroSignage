@@ -3,47 +3,32 @@
 
 {% block main %}
 
-    <div class="carousel carousel-slider fullscreen" data-autoplay="true" data-autoplay-interval="600">
+    <div class="carousel carousel-slider fullscreen" data-autoplay="true" data-autoplay-interval="8">
+
         <a class="carousel-item">
-            <img src="{{ url_for('static', filename='img/main.png') }}" alt="" class="background">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="carousel-logo">
+            <img src="{{ url_for('static', filename='img/background.jpg') }}" alt="" class="background">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="logo-large">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="logo animate">
         </a>
-        <a class="carousel-item" href="#one!">
-            <img src="{{ url_for('static', filename='img/blackboard.jpg') }}" alt="" class="background">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="carousel-logo">
-            <img src="{{ url_for('static', filename='img/TapariosRancheroz.png') }}" alt="" class="carousel-product-image">
+
+        <a class="carousel-item center-align">
+            <img src="{{ url_for('static', filename='img/background.jpg') }}" alt="" class="background">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="logo">
+            <img src="{{ url_for('static', filename='img/placeholder-1.png') }}" alt="" class="product-image">
             <div class="carousel-text">
                 <h1>Tapatios Rancheros</h1>
             </div>
-{#            <div class="carousel-item-content">#}
-{#                <div class="slide-img">#}
-{#                    <img src="{{ url_for('static', filename='img/TapariosRancheroz.png') }}" alt="" class="animate-img">#}
-{#                </div>#}
-{#                <div class="slide-text">#}
-{#                    <h1 class="animate-title">Tapatios Rancheros</h1>#}
-{#                </div>#}
-{#            </div>#}
         </a>
-        <a class="carousel-item">
-            <img src="{{ url_for('static', filename='img/blackboard.jpg') }}" alt="" class="background">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="carousel-logo">
-            <div class="carousel-item-content">
-                <div class="slide-img">
-                    <img src="{{ url_for('static', filename='img/tapatios.png') }}" alt="" class="animate-img">
-                </div>
-                <div class="slide-text">
-                    <h1 class="animate-title">Tapatios Regulares</h1>
-                </div>
+
+        <a class="carousel-item center-align">
+            <img src="{{ url_for('static', filename='img/background.jpg') }}" alt="" class="background">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="logo">
+            <img src="{{ url_for('static', filename='img/placeholder-2.png') }}" alt="" class="product-image">
+            <div class="carousel-text">
+                <h1>Tapatios Regulares</h1>
             </div>
         </a>
-        <a class="carousel-item" href="#two!">
-            <img src="{{ url_for('static', filename='img/250x250_b.png') }}" class="background">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="carousel-logo">
-        </a>
-        <a class="carousel-item" href="#three!">
-            <img src="{{ url_for('static', filename='img/250x250_c.png') }}" class="background">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="carousel-logo">
-        </a>
+
     </div>
 
 {% endblock %}

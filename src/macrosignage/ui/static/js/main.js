@@ -25,9 +25,9 @@ function animateSlides() {
     // Animate slide transition
     carouselSlide.classList.contains('active') ? animateCSS('.carousel-item.active', 'fadeIn') : null;
     // Animate the Logo
-    carouselSlide.querySelector('.carousel-logo') ? animateCSS('.carousel-item.active .carousel-logo', 'bounce') : null;
+    carouselSlide.querySelector('.carousel-logo.animate') ? animateCSS('.carousel-item.active .logo', 'bounce') : null;
     // Animate the main Image
-    carouselSlide.querySelector('.carousel-product-image') ? animateCSS('.carousel-item.active .carousel-product-image', 'tada') : null;
+    carouselSlide.querySelector('.product-image') ? animateCSS('.carousel-item.active .product-image', 'tada') : null;
     // Animate the text
     carouselSlide.querySelector('.carousel-text') ? animateCSS('.carousel-item.active .carousel-text', 'bounceIn') : null;
 }

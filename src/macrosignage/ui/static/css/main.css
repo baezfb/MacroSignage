@@ -33,7 +33,14 @@ main {
     background-color: black;
 }
 
-.carousel .carousel-item img.background {
+.carousel-item {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel-item img.background {
     height: 100%;
     position: absolute;
     top: 0;
@@ -41,7 +48,7 @@ main {
     z-index: -3;
 }
 
-.carousel-item img.carousel-logo {
+.carousel-item img.logo {
     position: absolute;
     top: 0;
     right: 0;
@@ -51,8 +58,22 @@ main {
     margin: 1rem;
 }
 
-.carousel-item img.carousel-product-image {
+.carousel-item img.logo-large {
+    position: absolute;
+    bottom: -40%;
+    right: 0;
+    transform: translate(-40%, 0);
+    z-index: -2;
+    height: 100%;
+    width: auto;
+}
 
+.carousel-item img.product-image {
+    flex: 1 0 auto;
+    max-height: 80vh;
+    max-width: 90vw;
+    overflow: hidden;
+    margin: 1rem 4rem 0;
 }
 
 .carousel-text {
