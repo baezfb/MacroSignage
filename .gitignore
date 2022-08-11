@@ -186,6 +186,7 @@ cython_debug/
 .idea/modules.xml
 .idea/vcs.xml
 .idea/watcherTasks.xml
+.idea/git_toolbox_prj.xml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
