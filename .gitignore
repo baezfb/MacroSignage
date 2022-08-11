@@ -1,5 +1,7 @@
 ### Project:
 __version__.py
+**/img/**
+**/fonts/**
 
 ### VirtualEnv template
 # Virtualenv
