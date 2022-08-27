@@ -3,7 +3,4 @@ recursive-include src *.html
 recursive-include src *.min.css
 recursive-include src *.min.js
 recursive-include src *.json
-recursive-include src *.png
-recursive-include src *.jpg
-recursive-include src *.svg
 recursive-include src *.woff2
