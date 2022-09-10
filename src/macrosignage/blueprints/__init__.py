@@ -1,3 +1,3 @@
-from .display import display as display_blueprint
+from .core import core as core_blueprint
 
-blueprints = [display_blueprint]
+blueprints = [core_blueprint]

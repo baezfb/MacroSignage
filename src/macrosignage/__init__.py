@@ -1,9 +1,9 @@
 from os import getcwd
 from os.path import abspath, dirname, join
 
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, send_from_directory
 
-from .utils import create_instance_config
+from .utils import create_instance_config, create_dir
 from .blueprints import blueprints
 from .extensions import extensions
 
@@ -30,6 +30,7 @@ def macro_signage_app(instance_path=None):
 
     # Create instance config file if it doesn't exist
     create_instance_config(instance_path)
+    create_dir(join(instance_path, 'uploads'))
 
     # Default config file
     application_default_config_file = join(cad, 'config.py')
@@ -55,9 +56,22 @@ def macro_signage_app(instance_path=None):
         from .extensions import db
         db.create_all()
 
-    @app.get('/')
-    def index():
-        return redirect(url_for('display.index'))
+    @app.route('/uploads/<path:filename>')
+    def download_file(filename):
+        """
+        Download file.
+        """
+        return send_from_directory(app.config['UPLOAD_PATH'], filename,
+                                   as_attachment=True)
+
+    @app.get('/init-db')
+    def init_db():
+        from macrosignage.extensions import db
+        try:
+            db.create_all()
+        except Exception as e:
+            print(e)
+        return redirect(url_for('.index'))
 
     # Register blueprints
     for blueprint in blueprints:

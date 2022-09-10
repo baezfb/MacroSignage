@@ -85,3 +85,117 @@ def create_instance_config(instance_path: str):
             create_file(instance_init_file)
     except FileExistsError:
         pass
+
+
+def save_file_to_upload_dir(file):
+    """
+    Upload file to path.
+
+    Args:
+        file (FileStorage): File to upload.
+
+    Returns:
+        None
+    """
+    from os.path import join
+    from werkzeug.utils import secure_filename
+    from flask import current_app
+    filename = secure_filename(file.filename)
+    upload_path = join(
+        current_app.config['UPLOAD_PATH'] + '/' or '')
+    file.save(join(upload_path, filename))
+
+
+def get_file_from_upload_dir(filename: str, path: str):
+    """
+    Get file from upload directory.
+
+    Args:
+        filename (str): Name of file.
+        path (str): Path to file.
+
+    Returns:
+        str: File path.
+    """
+    from os.path import join
+    from flask import current_app
+    upload_path = join(current_app.config['UPLOAD_PATH'], path + '/' or '')
+    return join(upload_path, filename)
+
+
+def get_file_extension(filename: str):
+    """
+    Get file extension.
+
+    Args:
+        filename (str): Name of file.
+
+    Returns:
+        str: File extension.
+    """
+    return filename.rsplit('.', 1)[1].lower()
+
+
+def allowed_file(filename: str):
+    """
+    Check if file is allowed.
+
+    Args:
+        filename (str): Name of file.
+
+    Returns:
+        bool: True if file is allowed, else False.
+    """
+    from flask import current_app
+    return '.' in filename and filename.rsplit('.', 1)[
+        1].lower() in current_app.config['ALLOWED_EXTENSIONS']
+
+
+def upload_file_to_path(file, path: str):
+    """
+    Upload file to path.
+
+    Args:
+        file (FileStorage): File to upload.
+        path (str): Path to upload file to.
+
+    Returns:
+        None
+    """
+    from os.path import join
+    from werkzeug.utils import secure_filename
+    filename = secure_filename(file.filename)
+    file.save(join(path, filename))
+
+
+def delete_file_from_path(path: str):
+    """
+    Delete file from path.
+
+    Args:
+        path (str): Path to file.
+
+    Returns:
+        None
+    """
+    from os import remove
+    try:
+        remove(path)
+    except FileNotFoundError:
+        pass
+
+
+def delete_file_from_upload_dir(filename: str):
+    """
+    Delete file from upload directory.
+
+    Args:
+        filename (str): Name of file.
+
+    Returns:
+        None
+    """
+    from os.path import join
+    from flask import current_app
+    upload_path = join(current_app.config['UPLOAD_PATH'] + '/' or '')
+    delete_file_from_path(join(upload_path, filename))

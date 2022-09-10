@@ -10,6 +10,8 @@ cwd = os.getcwd()
 DEBUG = True
 TESTING = False
 SECRET_KEY = 'secret'
+UPLOAD_PATH = os.path.join(cwd, 'instance', 'uploads')
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp'}
 
 # Database configuration
 DB_DIALECT = 'sqlite'

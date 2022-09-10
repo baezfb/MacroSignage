@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('load', init);
+    M.AutoInit();
 });
 
 function animateCSS(element, animation, prefix = 'animate__') {
