@@ -24,13 +24,13 @@ function animateCSS(element, animation, prefix = 'animate__') {
 function animateSlides() {
     const carouselSlide = document.querySelector('.carousel-item.active');
     // Animate slide transition
-    carouselSlide.classList.contains('active') ? animateCSS('.carousel-item.active', 'fadeIn') : null;
+    carouselSlide.classList.contains('active') ? animateCSS('.carousel-item.active', 'fadeInRight') : null;
     // Animate the Logo
-    carouselSlide.querySelector('.carousel-logo.animate') ? animateCSS('.carousel-item.active .logo', 'bounce') : null;
+    // carouselSlide.querySelector('.carousel-logo.animate') ? animateCSS('.carousel-item.active .logo', 'fadeInRightBig') : null;
     // Animate the main Image
-    carouselSlide.querySelector('.product-image') ? animateCSS('.carousel-item.active .product-image', 'tada') : null;
+    carouselSlide.querySelector('.product-image') ? animateCSS('.carousel-item.active .product-image', 'slideInRight') : null;
     // Animate the text
-    carouselSlide.querySelector('.carousel-text') ? animateCSS('.carousel-item.active .carousel-text', 'bounceIn') : null;
+    carouselSlide.querySelector('.carousel-text') ? animateCSS('.carousel-item.active .carousel-text', 'tada') : null;
 }
 
 const elems = document.querySelectorAll('.carousel.carousel-slider');

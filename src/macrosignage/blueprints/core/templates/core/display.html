@@ -6,7 +6,7 @@
 
 
     {% if display.slides %}
-        <div class="carousel carousel-slider fullscreen" data-autoplay="true" data-autoplay-interval="180">
+        <div class="carousel carousel-slider fullscreen" data-autoplay="true" data-autoplay-interval="8">
             {% for slide in display.slides %}
                 <a class="carousel-item center-align">
                     <img src="{{ url_for('download_file', filename=slide.background) }}" alt="" class="background">
